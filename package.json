@@ -1,0 +1,12 @@
+{
+  "name": "s51_roadwander",
+  "version": "1.0.0",
+  "description": "RoadWander is a web app designed to help users discover and plan memorable road trips worldwide.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
