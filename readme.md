@@ -14,4 +14,4 @@ RoadWander is a web application designed to help travelers discover the best roa
 - **User Authentication**: Secure user authentication and account management features to safeguard user data and personalize the experience.
 - **Real-time Updates**: Receive real-time updates on road conditions, weather forecasts, and local events to help plan your trip effectively.
 
-Get ready to embark on unforgettable road trips with RoadWander - your ultimate guide to adventure on the open road
+Get ready to embark on unforgettable road trips with RoadWander - your ultimate guide to adventure on the open road!
