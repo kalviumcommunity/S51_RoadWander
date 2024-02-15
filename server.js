@@ -5,6 +5,9 @@ const port = 3000;
 app.get('/ping', (req, res) => {
     res.send('Hello World');
 });
+app.get('', (req, res) => {
+    res.send('Hi Everyone!...This is my Home page');
+});
 
 app.get('/test', (req, res) => {
     res.send('Hello World testing');
