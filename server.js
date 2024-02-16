@@ -5,6 +5,7 @@ const port = 3000;
 app.get('/ping', (req, res) => {
     res.send('Hello World');
 });
+
 app.get('', (req, res) => {
     res.send('Hi Everyone!...This is my Home page');
 });
@@ -14,7 +15,7 @@ app.get('/test', (req, res) => {
 });
 
 app.use((req, res) => {
-    res.status(404).send("404 - Route not found");
+    res.status(404).send("404 - Not Found");
 });
 
 app.listen(port, () => {
