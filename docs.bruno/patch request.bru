@@ -1,0 +1,17 @@
+meta {
+  name: patch request
+  type: http
+  seq: 5
+}
+
+patch {
+  url: http://localhost:3000/patchdata/4
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "location": "satia"
+  }
+}
