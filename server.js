@@ -1,11 +1,17 @@
 require('dotenv').config();
 const express = require('express');
 const { connectToDB, disconnectFromDB, mongooseConnection } = require('./config/dbConn');
+const router = require('./routes/routes')
 
+const bodyparser= require('body-parser')
 const app = express();
 const port = 3000;
 
 connectToDB();
+
+app.use(bodyparser.json())
+app.use(express.json())
+app.use('/',router)
 
 // Function to check MongoDB connection status
 const isConnected = () => mongooseConnection.readyState === 1;

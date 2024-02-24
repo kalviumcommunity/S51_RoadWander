@@ -1,0 +1,24 @@
+meta {
+  name: post request
+  type: http
+  seq: 4
+}
+
+post {
+  url: http://localhost:3000/postdata
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "destination_id": 26,
+      "destination_name": "Grand Canyon of the USA",
+      "location": "Arizona state, USA",
+      "distance_from_origin": "255 miles",
+      "points_of_interest": "Grand Canyon National Park kingdom",
+      "recommended_activities": "Hiking, Rafting, Scenic Drives,rafting",
+      "best_time_to_visit": "Spring or Fall or winter",
+      "ratings_or_reviews": "4.4/5"
+  }
+}
