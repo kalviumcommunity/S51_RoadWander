@@ -1,6 +1,7 @@
 
 import './App.css'
-import LandingPage from './components/LandingPage'
+import LandingPage from './components/LandingPage/LandingPage'
+import DetailedDescriptionComponent from './components/DetailedDescription/DetailedDescriptionComponent'
 
 function App() {
 
@@ -8,7 +9,7 @@ function App() {
   return (
     <>
       <div>
-        <LandingPage/>
+        <DetailedDescriptionComponent/>
 
       </div>
     </>
