@@ -1,0 +1,23 @@
+.detailed-description {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .detailed-description h2 {
+    color: #333;
+  }
+  .detailed-description h3 {
+    color: #333;
+  }
+  
+  .detailed-description p {
+    margin: 10px 0;
+  }
+  
+  .detailed-description p:first-child {
+    margin-top: 0;
+  }
+  
