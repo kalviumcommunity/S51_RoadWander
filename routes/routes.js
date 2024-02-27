@@ -1,6 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const Destination = require('../Modal/modal.js');
+const cors = require('cors');
+
+// Use CORS middleware
+router.use(cors());
 
 // GET all destinations
 router.get('/getdata', async (req, res) => {
