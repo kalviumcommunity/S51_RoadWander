@@ -1,6 +1,7 @@
 
 import './App.css'
 import LandingPage from './components/LandingPage/LandingPage'
+import DBComponent from './components/DBcomponent/DBcomponent'
 import DetailedDescriptionComponent from './components/DetailedDescription/DetailedDescriptionComponent'
 
 function App() {
@@ -9,7 +10,7 @@ function App() {
   return (
     <>
       <div>
-        <DetailedDescriptionComponent/>
+        <DBComponent/>
 
       </div>
     </>
