@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import './DBcomponent.css'
+import { Link } from 'react-router-dom';
+import './DBcomponent.css';
 
 const DBComponent = () => {
   const [destinationData, setDestinationData] = useState(null);
@@ -7,7 +8,7 @@ const DBComponent = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:3000/getdata');
+        const response = await fetch('https://s51-akhil-roadwander.onrender.com/getdata');
         
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -27,13 +28,14 @@ const DBComponent = () => {
       {destinationData ? (
         <div>
           <h2>Destination Information</h2>
-          <table>
-            <tbody>
-              {destinationData.map(destination => (
-                <React.Fragment key={destination._id}>
+          <Link to="/create" className='link-button'>Add Data +</Link>
+          {destinationData.map(destination => (
+            <div key={destination._id} className='tableb'>
+              <table>
+                <tbody>
                   <tr>
-                    <td>Destination ID</td>
-                    <td>{destination.destination_id}</td>
+                    <td><strong>Destination ID:</strong></td>
+                    <td><strong>{destination.destination_id}</strong></td>
                   </tr>
                   <tr>
                     <td>Destination Name</td>
@@ -63,10 +65,10 @@ const DBComponent = () => {
                     <td>Ratings or Reviews</td>
                     <td>{destination.ratings_or_reviews}</td>
                   </tr>
-                </React.Fragment>
-              ))}
-            </tbody>
-          </table>
+                </tbody>
+              </table>
+            </div>
+          ))}
         </div>
       ) : (
         <p>Loading...</p>
