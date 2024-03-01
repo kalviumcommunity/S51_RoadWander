@@ -1,8 +1,20 @@
 const express = require('express');
 const router = express.Router();
 const Destination = require('../Modal/modal.js');
-const cors = require('cors');
+const Joi = require('joi');
+const cors =require('cors')
 
+// Define Joi schema for destination creation
+const destinationSchema = Joi.object({
+  destination_id: Joi.number().required(),
+  destination_name: Joi.string().required(),
+  location: Joi.string().required(),
+  distance_from_origin: Joi.string().required(),
+  points_of_interest: Joi.string().required(), 
+  recommended_activities: Joi.string().required(), 
+  best_time_to_visit: Joi.string().required(),
+  ratings_or_reviews: Joi.string().required() 
+});
 // Use CORS middleware
 router.use(cors());
 
@@ -17,25 +29,23 @@ router.get('/getdata', async (req, res) => {
 });
 
 // POST a new destination
-router.post('/postdata', async(req, res) => {
+router.post('/postdata', async (req, res) => {
   try {
-      const { destination_id, destination_name, location, distance_from_origin, points_of_interest, recommended_activities, best_time_to_visit, ratings_or_reviews } = req.body;
-      console.log(req.body);
-      const newDestination = new Destination({
-          destination_id,
-          destination_name,
-          location,
-          distance_from_origin,
-          points_of_interest,
-          recommended_activities,
-          best_time_to_visit,
-          ratings_or_reviews
-      });
-      await newDestination.save();
-      res.status(200).json({ "successfully posted": newDestination });
+    // Validate request body against schema
+    const { error } = destinationSchema.validate(req.body);
+    if (error) {
+      return res.status(400).json({ error: error.details[0].message });
+    }
+
+    // Proceed with creating the entity
+    const { destination_id, destination_name, location, distance_from_origin, points_of_interest, recommended_activities, best_time_to_visit, ratings_or_reviews } = req.body;
+    
+    // Your entity creation logic goes here...
+
+    res.status(200).json({ message: 'Entity created successfully' });
   } catch (error) {
-      console.log(error.message);
-      res.status(500).send('Internal Server Error');
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
   }
 });
 
