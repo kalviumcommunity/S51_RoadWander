@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import DeleteItem from '../DeleteItem/DeleteItem';
 import './DBcomponent.css';
 
 const DBComponent = () => {
@@ -64,6 +65,16 @@ const DBComponent = () => {
                   <tr>
                     <td>Ratings or Reviews</td>
                     <td>{destination.ratings_or_reviews}</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      {/* Add update button with Link to update page */}
+                      <Link to={`/update/${destination.destination_id}`} className='link-button'>Update</Link>
+                    </td>
+                    <td>
+                      {/* Add delete button */}
+                      <DeleteItem destination_id={destination.destination_id}  />
+                    </td>
                   </tr>
                 </tbody>
               </table>

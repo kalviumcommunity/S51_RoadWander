@@ -1,0 +1,70 @@
+.edit {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .edit h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .edit form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .edit form p {
+    margin-top: 15px;
+  }
+  
+  .edit form input[type="text"] {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .edit form button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .edit form button:hover {
+    background-color: #0056b3;
+  }
+  
+  .edit .message {
+    margin-top: 20px;
+  }
+  
+  .edit .message p {
+    margin-bottom: 10px;
+  }
+  
+  .edit .message p.green {
+    color: green;
+  }
+  
+  .edit .message p.red {
+    color: red;
+  }
+  
+  .edit .updated-destination {
+    margin-top: 20px;
+  }
+  
+  .edit .updated-destination p {
+    margin-bottom: 10px;
+  }
+  
