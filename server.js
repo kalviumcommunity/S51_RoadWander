@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const { connectToDB, disconnectFromDB, mongooseConnection } = require('./config/dbConn');
 const router = require('./routes/routes')
-
+const cookie = require("cookie-parser")
 const bodyparser= require('body-parser')
 const app = express();
 const port = 3000;
@@ -12,6 +12,7 @@ connectToDB();
 app.use(bodyparser.json())
 app.use(express.json())
 app.use('/',router)
+app.use(cookie())
 
 // Function to check MongoDB connection status
 const isConnected = () => mongooseConnection.readyState === 1;
@@ -30,6 +31,18 @@ app.get('/ping', (req, res) => {
 app.get('/test', (req, res) => {
     res.send('Hello World testing');
 });
+
+app.get("/login", (req, res) => {
+    const {userName} = req.body
+    res.cookie('user', userName)
+    res.send("login successful")
+})
+
+app.get("/logout", (req, res) => {
+    const {userName} = req.body
+    res.clearCookie('user', userName) 
+    res.send("logout successful")
+})
 
 // 404 Not Found handler
 app.use((req, res) => {

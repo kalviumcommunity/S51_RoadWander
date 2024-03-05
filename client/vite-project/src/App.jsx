@@ -17,6 +17,8 @@ function App() {
           <Route path="/create" element={<UserInput onAdd={handleAdd} />} />
           {/* Pass the destination_id parameter to the UpdateItem component */}
           <Route path="/update/:destination_id" element={<UpdateItem />} />
+          <Route path="/login"/>
+          <Route path="/logout"/>
         </Routes>
       </BrowserRouter>
     </div>
