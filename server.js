@@ -3,6 +3,7 @@ const express = require('express');
 const { connectToDB, disconnectFromDB, mongooseConnection } = require('./config/dbConn');
 const router = require('./routes/routes')
 const cookie = require("cookie-parser")
+const jwt = require("jsonwebtoken")
 const bodyparser= require('body-parser')
 const app = express();
 const port = 3000;
@@ -32,6 +33,7 @@ app.get('/test', (req, res) => {
     res.send('Hello World testing');
 });
 
+
 app.get("/login", (req, res) => {
     const {userName} = req.body
     res.cookie('user', userName)
@@ -43,6 +45,14 @@ app.get("/logout", (req, res) => {
     res.clearCookie('user', userName) 
     res.send("logout successful")
 })
+
+app.post('/auth', (req, res) => {
+    const { username, password } = req.body;
+    const token = jwt.sign({ username: username }, process.env.SECRET_KEY);
+    res.cookie('token', token);
+    res.send({ token });
+});
+
 
 // 404 Not Found handler
 app.use((req, res) => {
