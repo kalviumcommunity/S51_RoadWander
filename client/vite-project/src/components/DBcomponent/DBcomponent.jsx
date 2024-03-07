@@ -5,6 +5,8 @@ import './DBcomponent.css';
 
 const DBComponent = () => {
   const [destinationData, setDestinationData] = useState(null);
+  const [filteredData, setFilteredData] = useState(null);
+  const [selectedName, setSelectedName] = useState('All');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -16,6 +18,7 @@ const DBComponent = () => {
         }
         const data = await response.json();
         setDestinationData(data);
+        setFilteredData(data); // Initially set filtered data to all data
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -24,13 +27,36 @@ const DBComponent = () => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    // Filter data based on selected name
+    if (selectedName === 'All') {
+      setFilteredData(destinationData); // Display all data
+    } else {
+      const filtered = destinationData.filter(destination => destination.created_by === selectedName);
+      setFilteredData(filtered);
+    }
+  }, [selectedName, destinationData]);
+
+  const handleNameChange = (event) => {
+    setSelectedName(event.target.value);
+  };
+
   return (
     <div>
       {destinationData ? (
         <div>
           <h2>Destination Information</h2>
+          {/* Dropdown for filtering by names */}
+          <select onChange={handleNameChange} value={selectedName}>
+            <option value="All">All Names</option>
+            <option value="Alice">Alice</option>
+            <option value="Bob">Bob</option>
+            <option value="Charlie">Charlie</option>
+            <option value="David">David</option>
+            <option value="Emma">Emma</option>
+          </select>
           <Link to="/create" className='link-button'>Add Data +</Link>
-          {destinationData.map(destination => (
+          {filteredData.map(destination => (
             <div key={destination._id} className='tableb'>
               <table>
                 <tbody>
@@ -67,12 +93,14 @@ const DBComponent = () => {
                     <td>{destination.ratings_or_reviews}</td>
                   </tr>
                   <tr>
+                    <td>Created by</td>
+                    <td>{destination.created_by}</td>
+                  </tr>
+                  <tr>
                     <td>
-                      {/* Add update button with Link to update page */}
                       <Link to={`/update/${destination.destination_id}`} className='link-button'>Update</Link>
                     </td>
                     <td>
-                      {/* Add delete button */}
                       <DeleteItem destination_id={destination.destination_id}  />
                     </td>
                   </tr>
