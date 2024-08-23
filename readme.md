@@ -17,7 +17,3 @@ RoadWander is a web app designed to help users discover and plan memorable road 
 ## Render Deployed Link
  https://s51-akhil-roadwander.onrender.com
 
-
-## Netlify Deployed Link 
-
-https://roadwander.netlify.app/
